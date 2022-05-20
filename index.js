@@ -1,12 +1,6 @@
 // TODO: Include packages needed for this application
-
-const {
-    fileWrite,
-    writeFile
-} = require('fs');
-const {
-    prompt
-} = require('inquirer');
+const fs = require('fs');
+const inquirer = require('inquirer');
 
 const generateMarkdown = require('./utils/generateMarkdown.js')
 
@@ -53,51 +47,11 @@ const questions = [{
         name: 'question'
     }
 ];
-const generateData = ({
-    title,
-    description,
-    installation,
-    usage,
-    license,
-    contribution,
-    tests,
-    question
-}) => {
-    return `# ${title}
 
-## Table of content
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contribute](#contribution)
-- [Tests](#tests)
-- [Questions](#question)
-    
-## Description
-${description}
-
-    
-## Installation
-${installation}
-    
-## Usage
-${usage}
-    
-## Contribute
-If you would like to contribute, please checkout http://www.github.com/${contribution}
-    
-## Tests
-${tests}
-    
-## Questions
-For any questions, please email me at ${question}
-    `;
-}
-
-prompt([...questions]).then((answer) => {
-    writeFile('read.md', generateData(answer), (err) => {
+inquirer.prompt([...questions]).then((answer) => {
+    fs.writeFile('read.md', generateMarkdown(answer), (err) => {
         if (err) throw err;
-        console.log('NICE');
+        console.log('You made a readme.md');
     })
 });
 
