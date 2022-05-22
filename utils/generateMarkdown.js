@@ -12,7 +12,6 @@ function renderLicenseBadge(license) {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   let badgeLink = renderLicenseBadge(data.license)
-  console.log(data.license)
   return `# ${data.title}
 ${badgeLink}
 
