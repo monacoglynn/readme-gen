@@ -33,13 +33,13 @@ const questions = [{
     },
     {
         type: 'input',
-        message: 'whats your github username?',
-        name: 'contribution'
+        message: 'how to test the app?',
+        name: 'tests'
     },
     {
         type: 'input',
-        message: 'how to test the app?',
-        name: 'tests'
+        message: 'whats your github username?',
+        name: 'contribution'
     },
     {
         type: 'input',
@@ -54,12 +54,3 @@ inquirer.prompt([...questions]).then((answer) => {
         console.log('You made a readme.md');
     })
 });
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
