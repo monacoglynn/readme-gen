@@ -27,7 +27,7 @@ const questions = [{
     },
     {
         type: 'list',
-        message: 'what type of license?',
+        message: 'what type of license does this app have?',
         name: 'license',
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None']
     },

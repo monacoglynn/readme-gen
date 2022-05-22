@@ -4,7 +4,9 @@ function renderLicenseBadge(license) {
   if (license == 'None') {
     return '';
   } else {
-    return `![Generic badge](https://img.shields.io/badge/license-${license}-blue](https://shields.io/)`
+    let licenseLink = license.replace(' ', '%20')
+    return `[![Generic badge](https://img.shields.io/badge/license-${licenseLink}-blue.svg)](https://shields.io/)`
+
   }
 }
 
@@ -20,14 +22,16 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  let badgeLink = renderLicenseBadge(data.license)
+  console.log(data.license)
   return `# ${data.title}
-  [![Generic badge](https://img.shields.io/badge/license-<${data.license}>-blue.svg)](https://shields.io/)
+${badgeLink}
 
 ## Table of content
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contribute](#contribution)
+- [Contribute](#contribute)
 - [Tests](#tests)
 - [Questions](#question)
     
@@ -36,8 +40,11 @@ ${data.description}
 
     
 ## Installation
+To install the files needed to run the app, run the following command:
+~~~
 ${data.installation}
-    
+~~~
+
 ## Usage
 ${data.usage}
     
@@ -45,11 +52,14 @@ ${data.usage}
 If you would like to contribute, please checkout <http://www.github.com/${data.contribution}>
     
 ## Tests
+To test the application, run the command:
+~~~
 ${data.tests}
+~~~
     
 ## Questions
 For any questions, please email me at <${data.question}>
-    `;
+`;
 }
 
 module.exports = generateMarkdown;
