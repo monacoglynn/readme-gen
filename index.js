@@ -50,7 +50,7 @@ const questions = [{
 
 
 inquirer.prompt([...questions]).then((answer) => {
-    fs.writeFile('read.md', generateMarkdown(answer), (err) => {
+    fs.writeFile('./dist/README.md', generateMarkdown(answer), (err) => {
         if (err) throw err;
         console.log('You made a readme.md');
     })
